@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*
+!.env.example
+
+# Unit Test & Coverage Reports
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Python packaging & builds
+build/
+dist/
+*.egg-info/
+*.egg
+
+# IDEs & Code Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Logs & Temporary Files
+*.log
+tmp/
+temp/
+
+# Saved RL Model Checkpoints
+checkpoints/
+models/*.pkl
+models/*.pth
+models/*.pt
+
+# Processed Data Traces (uncomment if you do not want to track generated sample datasets in git)
+# data/processed/*.csv
