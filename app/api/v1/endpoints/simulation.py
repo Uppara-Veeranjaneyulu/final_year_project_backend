@@ -38,14 +38,19 @@ def step_simulation(req: StepRequest):
     
     # Check if episode ended
     if done:
+        # Derive acceptance and drop_rate from real episode counters
+        total_dispatched = env_instance.completed_tasks + env_instance.dropped_tasks
+        episode_acceptance = env_instance.completed_tasks / max(1, total_dispatched)
+        episode_drop_rate  = env_instance.dropped_tasks  / max(1, total_dispatched)
+
         updated_weights = reward_manager.update_at_episode_end({
-            "acceptance": 0.92,
-            "throughput": step_metrics["throughput"],
+            "acceptance":   episode_acceptance,
+            "throughput":   step_metrics["throughput"],
             "load_balance": step_metrics["load_balance"],
-            "latency": step_metrics["latency"],
-            "drop_rate": 0.04,
-            "overload": step_metrics["overload"],
-            "queue": step_metrics["queue"],
+            "latency":      step_metrics["latency"],
+            "drop_rate":    episode_drop_rate,
+            "overload":     step_metrics["overload"],
+            "queue":        step_metrics["queue"],
         })
     else:
         updated_weights = reward_manager.current_weights
